@@ -2,19 +2,92 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/index.php/progetti/chi-siamo", "destination": "/chi-siamo", "permanent": true },
-    { "source": "/index.php/progetti/gli-ambienti", "destination": "/camere", "permanent": true },
-    { "source": "/index.php/progetti/gli-spazi-comuni", "destination": "/colazioni", "permanent": true },
-    { "source": "/index.php/progetti/il-paesaggio", "destination": "/giardino-e-piscina", "permanent": true },
-    { "source": "/index.php/progetti/link-utili/2", "destination": "/mare-e-dintorni", "permanent": true },
-    { "source": "/index.php/progetti/link-utili", "destination": "/giardino-e-piscina", "permanent": true },
-    { "source": "/index.php/progetti/il-nostro-mare", "destination": "/mare-e-dintorni", "permanent": true },
-    { "source": "/index.php/progetti/dicono-di-noi", "destination": "/", "permanent": true },
-    { "source": "/index.php/progetti/contatti", "destination": "/contatti", "permanent": true },
-    { "source": "/index.php/progetti/il-blog", "destination": "/gazzettino", "permanent": true },
-    { "source": "/index.php/progetti/termini-e-condizioni", "destination": "/regole-della-casa", "permanent": true },
-    { "source": "/index.php/:path*", "destination": "/", "permanent": true },
-    { "source": "/files/:path*", "destination": "/", "permanent": true },
-    { "source": "/xml", "destination": "/gazzettino", "permanent": true }
+    {
+      "source": "/index.php/progetti/chi-siamo",
+      "destination": "/chi-siamo",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/progetti/gli-ambienti",
+      "destination": "/camere",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/progetti/gli-spazi-comuni",
+      "destination": "/colazioni",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/progetti/il-paesaggio",
+      "destination": "/giardino-e-piscina",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/progetti/link-utili/2",
+      "destination": "/mare-e-dintorni",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/progetti/link-utili",
+      "destination": "/giardino-e-piscina",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/progetti/il-nostro-mare",
+      "destination": "/mare-e-dintorni",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/progetti/dicono-di-noi",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/progetti/contatti",
+      "destination": "/contatti",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/progetti/il-blog",
+      "destination": "/gazzettino",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/progetti/termini-e-condizioni",
+      "destination": "/regole-della-casa",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/files/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/xml",
+      "destination": "/gazzettino",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?<sub>.*)\\.vercel\\.app"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    }
   ]
 }

@@ -15,6 +15,9 @@ Le foto stanno in `foto/` (prese dal sito attuale, al massimo 700 px di lato). P
 - `src/data/gazzettino.csv` — le notizie di Donna Ida.
 - `src/data/consigli.csv` — ristoranti e link utili della pagina Mare e dintorni.
 
+## Anteprima su Vercel
+Sull'indirizzo *.vercel.app il sito risponde con "noindex" (regola in `vercel.json`), così Google non lo indicizza come copia. Sul dominio vero la regola non si applica.
+
 ## Prima di andare online
 - [ ] Foto originali in alta risoluzione (quelle attuali sono al massimo 700 px) e logo in formato vettoriale.
 - [ ] Nome e dati fiscali di chi gestisce la struttura, codice CIN (obbligatorio per le strutture ricettive) in `impostazioni.csv`.
