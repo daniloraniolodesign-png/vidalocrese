@@ -103,6 +103,7 @@ p{margin:0}
 .story{display:grid;grid-template-columns:200px 1fr 200px;gap:40px;align-items:start}
 .story .side{display:grid;gap:40px}
 .story .side img{border-radius:var(--r-md);aspect-ratio:4/3;object-fit:cover}
+.story .side img.vert{aspect-ratio:3/4;object-position:50% 20%}
 .story .right{padding-top:80px}
 .story .mid{display:grid;gap:18px;max-width:560px}
 .story .mid p{color:var(--muted)}
