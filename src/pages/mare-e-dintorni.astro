@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import Foto from '../components/Foto.astro';
+import Pill from '../components/Pill.astro';
+import { consigli } from '../lib/dati';
+const gruppi = [...new Set(consigli.map((c) => c.gruppo))];
+---
+<Base
+  titolo="Il mare di Locri e la Costa dei Gelsomini · Vida Locrese"
+  descrizione="Da Vida Locrese il mare Ionio è a 5 km: spiagge quasi tutte libere, Locri Bandiera Blu 2026, il borgo di Gerace a 7 km. I nostri consigli su dove mangiare."
+  attiva="mare" immagine="spiaggia">
+
+  <section class="phero2" aria-labelledby="titolo">
+    <div class="card">
+      <span class="eyebrow"><i></i>Il nostro mare</span>
+      <h1 id="titolo">Acqua azzurra, <b>acqua chiara</b></h1>
+      <p>A 5 km c'è la costa ionica: spiagge quasi tutte libere, davvero. E all'occorrenza qualche lido economico che possiamo consigliarvi.</p>
+    </div>
+    <div class="pic"><Foto nome="spiaggia" alt="Spiaggia di sabbia chiara con il mare calmo" prima sizes="(max-width: 900px) 100vw, 620px" width="700" height="513" /></div>
+  </section>
+
+  <section class="story" aria-labelledby="costa">
+    <div class="side"><span class="eyebrow"><i></i>Costa dei Gelsomini</span><Foto nome="mare" alt="Il mare blu visto dalla spiaggia" sizes="200px" width="450" height="600" /></div>
+    <div class="mid">
+      <h2 class="h2" id="costa">Nelle acque <b>dei Bronzi di Riace</b></h2>
+      <p>Siamo sulla Costa dei Gelsomini, nella <b>Locri Epizefiri</b> dei magnogreci Zaleuco, Nosside, Agesidamo ed Eutimo, ai piedi della medievale Gerace.</p>
+      <p>Dal 2026 Locri è anche <b>Bandiera Blu</b>, per la prima volta nella sua storia.</p>
+    </div>
+    <div class="side right"><Foto nome="canestro" alt="Un canestro da basket sulla spiaggia davanti al mare" sizes="200px" width="525" height="700" /></div>
+  </section>
+
+  <section aria-labelledby="galleria">
+    <h2 class="sr" id="galleria">Foto delle spiagge</h2>
+    <div class="gal">
+      <Foto nome="tramonto-mare" alt="Il mare al tramonto con il cielo viola" class="big" sizes="(max-width: 900px) 100vw, 600px" width="700" height="515" />
+      <Foto nome="spiaggia-2" alt="Sabbia e mare sotto un cielo nuvoloso" sizes="(max-width: 900px) 50vw, 290px" width="700" height="514" />
+      <Foto nome="lido" alt="Un piccolo lido sulla spiaggia" sizes="(max-width: 900px) 50vw, 290px" width="700" height="525" />
+      <Foto nome="spiaggia-sera" alt="La spiaggia al tramonto" sizes="(max-width: 900px) 50vw, 290px" width="700" height="510" />
+      <Foto nome="spiaggia-3" alt="Spiaggia con un tronco portato dal mare" sizes="(max-width: 900px) 50vw, 290px" width="450" height="600" />
+    </div>
+  </section>
+
+  <section aria-labelledby="consigli">
+    <div class="head-row">
+      <h2 class="h2" id="consigli">I nostri <b>consigli</b></h2>
+      <Pill href="/gazzettino" testo="Eventi e notizie" tono="chiaro" />
+    </div>
+    <div class="cats">
+      {gruppi.map((g, i) => (
+        <div class:list={['cat', i === 1 && 'inv']}>
+          <h3><span>({String(i + 1).padStart(2, '0')})</span>{g}</h3>
+          <ul class="tags" style="display:grid;gap:4px">
+            {consigli.filter((c) => c.gruppo === g).map((c) => (
+              <li style="border:0;padding:0"><a href={c.link} target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:44px">{c.nome}</a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="dark" aria-labelledby="gerace">
+    <div class="l">
+      <h2 class="h2" id="gerace">Gerace, <b>a 7 km</b></h2>
+      <p style="color:var(--soft);max-width:48ch">Dalla nostra pianura, con l'orizzonte a ponente verso il Tre Pizzi d'Aspromonte, il borgo medievale di Gerace è a pochi minuti. D'estate ha un calendario pieno di concerti, spettacoli e tradizioni.</p>
+      <div><Pill href="/gazzettino" testo="Il gazzettino di Donna Ida" tono="chiaro" /></div>
+    </div>
+    <div class="r"><Foto nome="merici" alt="Il cartello in ferro di Merici" sizes="(max-width: 900px) 100vw, 560px" width="700" height="467" style="border-radius:var(--r-lg);aspect-ratio:3/2;object-fit:cover;width:100%" /></div>
+  </section>
+</Base>

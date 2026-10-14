@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import Pill from '../components/Pill.astro';
+---
+<Base titolo="Pagina non trovata · Vida Locrese" descrizione="La pagina che cerchi non esiste o è stata spostata." noindex>
+  <section class="legale" style="max-width:none">
+    <span class="eyebrow"><i></i>Errore 404</span>
+    <h1>Questa pagina <b>non c'è più</b></h1>
+    <p>Forse è stata spostata con il nuovo sito. Riparti da qui:</p>
+    <div class="actions">
+      <Pill href="/" testo="Home" /><Pill href="/camere" testo="Le camere" tono="chiaro" /><Pill href="/contatti#richiesta" testo="Chiedi la disponibilità" tono="chiaro" />
+    </div>
+  </section>
+</Base>

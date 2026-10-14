@@ -1,0 +1,27 @@
+---
+import Legale from '../layouts/Legale.astro';
+import { imp, tel } from '../lib/dati';
+---
+<Legale titolo="Regole della casa" descrizione="Le condizioni di soggiorno a Vida Locrese: prenotazione, check-in, piscina, colazione, pulizie e animali.">
+  <p>Prenotando Vida Locrese, in qualsiasi modo, si accettano queste condizioni, salvo accordi diversi presi per iscritto o sul portale di prenotazione.</p>
+  <ol class="regole">
+    <li>La prenotazione non si può disdire.</li>
+    <li>La ricevuta del pagamento online vale come ricevuta.</li>
+    <li>Non si possono portare animali, per evitare allergie agli altri ospiti. Fa eccezione chi affitta tutta la casa, con un accordo apposito.</li>
+    <li>Per rispetto degli altri ospiti non sono ammesse feste né persone non alloggiate. La proprietà può comunque organizzare eventi, avvisando prima gli ospiti.</li>
+    <li>Per sicurezza, barbecue e vecchio forno a legna si usano solo d'accordo con noi.</li>
+    <li>La piscina non ha il bagnino: si usa dalle 8 alle 20, con la cuffia, sotto la propria responsabilità o quella di genitori e tutori.</li>
+    <li>Frutta degli alberi e ortaggi dell'orto si possono cogliere per consumarli qui.</li>
+    <li>Pulizia della camera e cambio di lenzuola e asciugamani sono gratuiti dopo 7 notti. A richiesta si fanno anche durante la settimana, a 15 euro per ciascun servizio.</li>
+    <li>Lavatrice e lavastoviglie si possono usare su richiesta, con un contributo di 15 euro a lavaggio.</li>
+    <li>Il parcheggio è riservato, con ingresso da un cancello accanto alla casa, ma non è custodito.</li>
+    <li>Gli spazi esterni sono controllati da telecamere per sicurezza. Le immagini si cancellano in automatico.</li>
+    <li>I dati degli ospiti si usano solo per le comunicazioni previste dalla legge. Dettagli nell'<a href="/privacy">informativa sulla privacy</a>.</li>
+    <li>Il check-in è dalle 15 alle 19, dopo una telefonata a Manuela al <a href={tel(imp.tel2)}>{imp.tel2_vista}</a>. Il check-out è entro le 10:30.</li>
+    <li>La colazione dolce e salata è tra le 9 e le 9:30: le bevande calde sono servite, il resto è a buffet.</li>
+    <li>Negli spazi chiusi non si fuma. Chi lo fa paga 200 euro, che diamo in beneficenza a Medici Senza Frontiere.</li>
+    <li>Eventuali danni o oggetti portati via possono essere addebitati sulla carta di credito usata per la prenotazione.</li>
+    <li>Nei bagni, al posto del bidet, c'è la doccetta igienica vicino al water.</li>
+    <li>Vida Locrese è per la pace, l'amore e l'inclusione tra tutti i popoli e ripudia ogni forma di violenza.</li>
+  </ol>
+</Legale>

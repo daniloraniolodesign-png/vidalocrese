@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro';
+import Foto from '../components/Foto.astro';
+import Pill from '../components/Pill.astro';
+---
+<Base
+  titolo="Colazione dolce e salata e cucina in comune · Vida Locrese"
+  descrizione="A Vida Locrese la colazione è dolce e salata, quasi un brunch. Gli ospiti hanno una cucina in comune e, su richiesta, a cena i piatti tipici calabresi."
+  attiva="colazioni" immagine="colazione-buffet">
+
+  <section class="phero2" aria-labelledby="titolo">
+    <div class="card">
+      <span class="eyebrow"><i></i>Cucina e colazioni</span>
+      <h1 id="titolo">Aggiungi <b>un posto a tavola</b></h1>
+      <p>Colazioni dolci e salate, una cucina da condividere e, su richiesta, i nostri piatti tipici a cena.</p>
+    </div>
+    <div class="pic"><Foto nome="colazione-buffet" alt="La colazione a buffet con dolci, frutta e salumi" prima sizes="(max-width: 900px) 100vw, 620px" width="622" height="700" /></div>
+  </section>
+
+  <section class="split" aria-labelledby="colazione">
+    <div class="t">
+      <span class="eyebrow"><i></i>La mattina</span>
+      <h2 class="h2" id="colazione">Le colazioni <b>"du panaru" e "da bumbulella"</b></h2>
+      <div class="prose">
+        <p>Ormai sono diventate proverbiali: <b>dolci e salate</b>, praticamente un brunch.</p>
+        <p>Le bevande calde le serviamo noi, il resto è a buffet. La colazione è tra le 9 e le 9:30.</p>
+      </div>
+    </div>
+    <Foto nome="colazione" alt="Tavola apparecchiata per la colazione con dolci e marmellate" sizes="(max-width: 900px) 100vw, 580px" width="700" height="525" />
+  </section>
+
+  <section aria-labelledby="galleria">
+    <h2 class="sr" id="galleria">Foto delle colazioni</h2>
+    <div class="gal">
+      <Foto nome="colazione-dolci" alt="Crostate e dolci con frutta fresca" class="big" sizes="(max-width: 900px) 100vw, 600px" width="700" height="468" />
+      <Foto nome="cesto-frutta" alt="Cesto di frutta fresca" sizes="(max-width: 900px) 50vw, 290px" width="700" height="526" />
+      <Foto nome="uova" alt="Uova fresche in un nido di paglia" sizes="(max-width: 900px) 50vw, 290px" width="700" height="526" />
+      <Foto nome="focacce" alt="Piatto di frutta e verdura decorato" sizes="(max-width: 900px) 50vw, 290px" width="700" height="526" />
+      <Foto nome="frutta" alt="Frutta di stagione con fiori" sizes="(max-width: 900px) 50vw, 290px" width="700" height="526" />
+    </div>
+  </section>
+
+  <section class="dark" aria-labelledby="cucina">
+    <div class="l">
+      <span class="eyebrow" style="color:var(--soft)"><i></i>La cucina in comune</span>
+      <h2 class="h2" id="cucina">Cucinate da soli <b>o tutti insieme</b></h2>
+      <p style="color:var(--soft);max-width:50ch">Nello spirito della condivisione abbiamo creato un'ampia cucina in comune, separata dalla zona delle camere. Ogni ospite può prepararsi da mangiare, da solo o insieme agli altri.</p>
+      <p style="color:var(--soft);max-width:50ch">E se volete, <b style="color:#fff;font-weight:600">su richiesta</b>, a cena vi facciamo assaggiare i nostri piatti più tipici.</p>
+      <div><Pill href="/contatti#richiesta" testo="Chiedi informazioni" tono="chiaro" /></div>
+    </div>
+    <div class="r">
+      <Foto nome="cucina" alt="La cucina in comune con il tavolo grande" sizes="(max-width: 900px) 100vw, 560px" width="693" height="520" style="border-radius:var(--r-lg);aspect-ratio:4/3;object-fit:cover;width:100%" />
+      <Foto nome="tavola-giardino" alt="La tavola apparecchiata in giardino all'ombra" sizes="(max-width: 900px) 100vw, 560px" width="700" height="503" style="border-radius:var(--r-lg);aspect-ratio:16/9;object-fit:cover;width:100%" />
+    </div>
+  </section>
+
+  <section class="mosaico" aria-labelledby="sera">
+    <Foto nome="cena-amici" alt="Una cena all'aperto con amici intorno alla tavola" sizes="(max-width: 900px) 50vw, 400px" width="700" height="525" />
+    <Foto nome="antipasti" alt="Piatti di antipasti e verdure" sizes="(max-width: 900px) 50vw, 400px" width="700" height="441" />
+    <Foto nome="ciotole" alt="Ciotole di ceramica colorata sul tavolo" sizes="400px" width="525" height="700" />
+    <div class="over">
+      <h2 id="sera">Frutta e ortaggi dell'orto: <b>si possono cogliere</b> per consumarli qui.</h2>
+      <div class="badges">
+        <div class="badge hi"><b>Colazione</b><span>dolce e salata, dalle 9 alle 9:30</span></div>
+        <div class="badge"><b>Cena tipica</b><span>su richiesta</span></div>
+      </div>
+    </div>
+  </section>
+</Base>

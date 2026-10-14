@@ -1,0 +1,17 @@
+---
+import { imp, VOCI } from '../lib/dati';
+interface Props { attiva?: string }
+const { attiva = '' } = Astro.props;
+---
+<nav class="nav solo" aria-label="Menu principale">
+  <a class="brand" href="/"><img src="/logo-orizzontale.png" alt={`${imp.nome}, torna alla home`} width="196" height="46"></a>
+  <ul class="menu">
+    {VOCI.map((v) => <li><a href={v.href} aria-current={v.id === attiva ? 'page' : undefined}>{v.nome}</a></li>)}
+  </ul>
+  <div class="tools">
+    <a class="cta-s" href="/contatti#richiesta">Prenota</a>
+    <button class="round burger" type="button" aria-label="Apri il menu" aria-controls="pannello" aria-expanded="false" data-apri>
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M2 4.5h12M2 8h12M2 11.5h12"/></svg>
+    </button>
+  </div>
+</nav>

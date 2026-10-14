@@ -1,0 +1,32 @@
+---
+import Legale from '../layouts/Legale.astro';
+import { imp } from '../lib/dati';
+---
+<Legale titolo="Informativa sulla privacy" descrizione="Come Vida Locrese tratta i dati personali di chi usa il sito."
+  mancano={[
+    'nome e dati fiscali del titolare (persona o impresa che gestisce la struttura)',
+    'il servizio che riceve le richieste del modulo e il suo accordo sul trattamento dei dati',
+    'per quanto tempo si conservano le richieste ricevute',
+  ]}>
+  <h2>Chi tratta i dati</h2>
+  <p>Il titolare del trattamento è chi gestisce {imp.nome}, {imp.indirizzo}. Per qualsiasi richiesta sui tuoi dati scrivi a {imp.email}.</p>
+  <h2>Quali dati raccogliamo</h2>
+  <ul>
+    <li><b>Modulo "Chiedi la disponibilità":</b> nome, telefono, email, date del soggiorno, numero di ospiti e quello che scrivi nel messaggio.</li>
+    <li><b>Dati tecnici di navigazione:</b> il servizio che ospita il sito registra per sicurezza dati come indirizzo IP, data e pagina richiesta.</li>
+    <li><b>Soggiorno:</b> i dati degli ospiti si usano solo per le comunicazioni previste dalla legge.</li>
+  </ul>
+  <h2>Perché e su quale base</h2>
+  <ul>
+    <li>Per rispondere alla tua richiesta e gestire la prenotazione: misure precontrattuali richieste da te (art. 6.1.b del Regolamento UE 2016/679).</li>
+    <li>Per gli obblighi di legge legati al soggiorno (art. 6.1.c).</li>
+    <li>Per la sicurezza e il funzionamento del sito: legittimo interesse (art. 6.1.f).</li>
+  </ul>
+  <p>Non usiamo i dati per pubblicità e non li vendiamo a nessuno.</p>
+  <h2>Telecamere</h2>
+  <p>Gli spazi esterni della struttura sono controllati da telecamere per motivi di sicurezza. Le immagini si cancellano in automatico.</p>
+  <h2>Chi altro li vede</h2>
+  <p>Il fornitore che ospita il sito (Vercel Inc., aderente al Data Privacy Framework UE-USA) e il servizio che riceve le richieste del modulo, come responsabili del trattamento. Le prenotazioni su Booking.com seguono l'informativa di Booking.com.</p>
+  <h2>I tuoi diritti</h2>
+  <p>Puoi chiedere di vedere, correggere o cancellare i tuoi dati, limitarne l'uso, opporti al trattamento e riceverli in un formato leggibile. Scrivi a {imp.email}. Puoi anche presentare reclamo al Garante per la protezione dei dati personali (garanteprivacy.it).</p>
+</Legale>

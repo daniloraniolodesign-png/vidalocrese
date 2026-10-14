@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import Foto from '../components/Foto.astro';
+import Pill from '../components/Pill.astro';
+---
+<Base
+  titolo="Camere climatizzate per famiglie vicino Locri · Vida Locrese"
+  descrizione="Quattro camere a colori fino a 4 persone, ristrutturate, con aria condizionata, wi-fi, minibar, macchina Nespresso e cassaforte. Ognuna con affaccio esterno."
+  attiva="camere" immagine="camera-blu-2">
+
+  <section class="phero2" aria-labelledby="titolo">
+    <div class="card">
+      <span class="eyebrow"><i></i>Le camere</span>
+      <h1 id="titolo">Un sogno <b>colorato</b></h1>
+      <p>Quattro stanze a colori, familiari e accoglienti fino a 4 persone. Tutte ristrutturate e finemente arredate.</p>
+      <div class="actions"><Pill href="/contatti#richiesta" testo="Chiedi la disponibilità" /></div>
+    </div>
+    <div class="pic"><Foto nome="camera-blu-2" alt="Camera con letto blu, pareti chiare e quadro del mare" prima sizes="(max-width: 900px) 100vw, 620px" width="700" height="512" /></div>
+  </section>
+
+  <section aria-labelledby="dotazioni">
+    <div class="head-row"><h2 class="h2" id="dotazioni">In ogni <b>camera</b></h2></div>
+    <div class="servizi">
+      <div class="serv"><h3>Fresco e connessi</h3><p>Aria condizionata e collegamento wi-fi.</p></div>
+      <div class="serv"><h3>Il caffè in camera</h3><p>Macchina Nespresso, bollitore e minibar.</p></div>
+      <div class="serv"><h3>Comodità</h3><p>Asciugacapelli e cassaforte.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="galleria">
+    <h2 class="sr" id="galleria">Foto delle camere</h2>
+    <div class="gal">
+      <Foto nome="camera-gialla" alt="Camera con letto matrimoniale e pareti gialle" class="big" sizes="(max-width: 900px) 100vw, 600px" width="700" height="525" />
+      <Foto nome="camera-blu" alt="Camera con letto blu e quadri del mare" sizes="(max-width: 900px) 50vw, 290px" width="700" height="394" />
+      <Foto nome="camera-blu-3" alt="Camera con letto blu e porta finestra" sizes="(max-width: 900px) 50vw, 290px" width="700" height="569" />
+      <Foto nome="bagno-lilla" alt="Bagno con pareti lilla e doccia" sizes="(max-width: 900px) 50vw, 290px" width="693" height="520" />
+      <Foto nome="bagno-giallo" alt="Bagno con pareti gialle e doccia" sizes="(max-width: 900px) 50vw, 290px" width="700" height="467" />
+    </div>
+  </section>
+
+  <section class="split" aria-labelledby="affaccio">
+    <div class="t">
+      <span class="eyebrow"><i></i>L'affaccio</span>
+      <h2 class="h2" id="affaccio">Ogni camera <b>guarda fuori</b></h2>
+      <div class="prose">
+        <p>Ognuna ha un proprio affaccio esterno, circondato dall'<b>antico aranceto con uliveto</b>, dai colli e dalle sculture.</p>
+        <p>Se sarete fortunati, sentirete "suonare" lo scalpello di uno degli artisti che abitano qui vicino.</p>
+      </div>
+    </div>
+    <Foto nome="balcone-3" alt="Il balcone con tavolino affacciato sul verde e sulle colline" sizes="(max-width: 900px) 100vw, 580px" width="700" height="525" />
+  </section>
+
+  <section aria-labelledby="spazi">
+    <h2 class="sr" id="spazi">Balconi e spazi esterni delle camere</h2>
+    <div class="gal">
+      <Foto nome="patio" alt="Il patio con tenda e piante davanti a una camera" sizes="(max-width: 900px) 50vw, 290px" width="700" height="526" />
+      <Foto nome="balcone" alt="Balcone con sedia e vista sulle colline" sizes="(max-width: 900px) 50vw, 290px" width="523" height="700" />
+      <Foto nome="nespresso" alt="Macchina Nespresso, bollitore e cortesie in camera" sizes="(max-width: 900px) 50vw, 290px" width="700" height="526" />
+      <Foto nome="bagno-blu" alt="Bagno con pareti blu" sizes="(max-width: 900px) 50vw, 290px" width="693" height="520" />
+    </div>
+  </section>
+
+  <section class="dark" aria-labelledby="pratico">
+    <div class="l">
+      <h2 class="h2" id="pratico">Da sapere <b>prima di arrivare</b></h2>
+      <p style="color:var(--soft);max-width:48ch">Pulizia della camera e cambio di lenzuola e asciugamani sono gratuiti dopo 7 notti. A richiesta si possono fare anche durante la settimana, a 15 euro per servizio.</p>
+      <div><Pill href="/regole-della-casa" testo="Le regole della casa" tono="chiaro" /></div>
+    </div>
+    <div class="r">
+      <div class="stats" style="gap:12px">
+        <div class="stat hi" style="flex:1 1 180px"><b>15–19</b><span>orario del check-in, dopo una telefonata a Manuela</span></div>
+        <div class="stat" style="flex:1 1 180px"><b>10:30</b><span>ora massima del check-out</span></div>
+        <div class="stat" style="flex:1 1 180px"><b>No smoking</b><span>negli spazi chiusi</span></div>
+      </div>
+    </div>
+  </section>
+</Base>

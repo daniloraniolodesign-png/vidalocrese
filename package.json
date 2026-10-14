@@ -1,0 +1,20 @@
+{
+  "name": "vidalocrese-sito",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "predev": "node scripts/foto.mjs",
+    "prebuild": "node scripts/foto.mjs",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/dm-sans": "^5.3.0",
+    "astro": "^5.18.2",
+    "csv-parse": "^7.0.3",
+    "sharp": "^0.35.5"
+  }
+}

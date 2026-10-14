@@ -1,0 +1,66 @@
+---
+// Modulo "Chiedi la disponibilità". Invia a PUBLIC_FORM_ENDPOINT (es. Formspree) quando è impostato.
+// Senza indirizzo impostato avvisa che il modulo non è ancora attivo, invece di fingere l'invio.
+import { imp } from '../lib/dati';
+interface Props { titolo: string; id?: string }
+const { titolo, id } = Astro.props;
+const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? '';
+---
+<form class="form" id={id} data-modulo data-endpoint={endpoint} novalidate>
+  <h2 class="h2" style="font-size:clamp(24px,2.4vw,32px)">{titolo}</h2>
+  <div class="row">
+    <label for="m-arrivo">Arrivo<input id="m-arrivo" name="arrivo" type="date" required></label>
+    <label for="m-partenza">Partenza<input id="m-partenza" name="partenza" type="date" required></label>
+  </div>
+  <div class="row">
+    <label for="m-adulti">Adulti<select id="m-adulti" name="adulti">{[1, 2, 3, 4, 5, 6, 7, 8].map((n) => <option selected={n === 2}>{n}</option>)}</select></label>
+    <label for="m-bambini">Bambini<select id="m-bambini" name="bambini">{[0, 1, 2, 3, 4, 5, 6].map((n) => <option>{n}</option>)}</select></label>
+  </div>
+  <div class="row">
+    <label for="m-nome">Nome e cognome<input id="m-nome" name="nome" autocomplete="name" required></label>
+    <label for="m-tel">Telefono<input id="m-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required></label>
+  </div>
+  <label for="m-mail">Email<input id="m-mail" name="email" type="email" autocomplete="email" required></label>
+  <label for="m-msg">Messaggio (facoltativo)<textarea id="m-msg" name="messaggio"></textarea></label>
+  <label class="check" for="m-priv"><input id="m-priv" type="checkbox" name="privacy" required> <span>Ho letto l'<a href="/privacy">informativa sulla privacy</a>.</span></label>
+  <div><button class="pill" type="submit">Invia la richiesta<span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M6 4h6v6"/></svg></span></button></div>
+  <p class="esito" role="status" hidden></p>
+  <p class="muted" style="font-size:14px">Preferisci chiamare? {imp.tel1_nome} {imp.tel1_vista} · {imp.tel2_nome} {imp.tel2_vista}</p>
+</form>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('[data-modulo]').forEach((f) => {
+    const esito = f.querySelector<HTMLElement>('.esito')!;
+    const arrivo = f.querySelector<HTMLInputElement>('[name=arrivo]')!;
+    const partenza = f.querySelector<HTMLInputElement>('[name=partenza]')!;
+    const oggi = new Date().toISOString().slice(0, 10);
+    arrivo.min = oggi; partenza.min = oggi;
+    arrivo.addEventListener('change', () => { partenza.min = arrivo.value || oggi; });
+    const dici = (t: string) => { esito.hidden = false; esito.textContent = t; };
+    f.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const mancante = [...f.querySelectorAll<HTMLInputElement>('[required]')].find((i) => !i.checkValidity());
+      if (mancante) {
+        dici(mancante.type === 'checkbox'
+          ? 'Per inviare devi confermare di aver letto l’informativa sulla privacy.'
+          : `Controlla il campo “${mancante.closest('label')?.firstChild?.textContent?.trim()}”.`);
+        mancante.focus();
+        return;
+      }
+      if (partenza.value <= arrivo.value) { dici('La partenza deve essere dopo l’arrivo.'); partenza.focus(); return; }
+      const url = f.dataset.endpoint;
+      if (!url) {
+        dici('Questa è un’anteprima: il modulo non invia ancora le richieste. Per ora chiama o scrivi a info@vidalocrese.it.');
+        return;
+      }
+      try {
+        const r = await fetch(url, { method: 'POST', body: new FormData(f), headers: { Accept: 'application/json' } });
+        if (!r.ok) throw new Error();
+        f.reset();
+        dici('Richiesta inviata. Ti rispondiamo al più presto per confermare la disponibilità.');
+      } catch {
+        dici('Invio non riuscito. Riprova tra poco o chiamaci.');
+      }
+    });
+  });
+</script>

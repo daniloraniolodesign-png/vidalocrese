@@ -1,0 +1,139 @@
+---
+import '@fontsource-variable/dm-sans';
+import fontUrl from '@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2?url';
+import '../styles/sito.css';
+import Testata from '../components/Testata.astro';
+import { imp, VOCI, tel } from '../lib/dati';
+
+interface Props {
+  titolo: string; descrizione: string; attiva?: string;
+  noindex?: boolean; jsonld?: object[]; immagine?: string;
+}
+const { titolo, descrizione, attiva = '', noindex = false, jsonld = [], immagine = 'piscina-pino' } = Astro.props;
+const canonico = new URL(Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/'), Astro.site).href;
+const struttura = {
+  '@context': 'https://schema.org',
+  '@type': 'BedAndBreakfast',
+  name: imp.nome,
+  description: 'B&B con piscina salata e parcheggio riservato a Merici (Gerace), a 5 km dal mare Ionio. Quattro camere climatizzate.',
+  url: Astro.site?.href,
+  email: imp.email,
+  telephone: imp.tel1,
+  image: new URL('/img/web/piscina-pino-1280.webp', Astro.site).href,
+  address: { '@type': 'PostalAddress', streetAddress: 'Contrada Merici 8', postalCode: '89040', addressLocality: 'Gerace', addressRegion: 'RC', addressCountry: 'IT' },
+  numberOfRooms: 4,
+  checkinTime: '15:00', checkoutTime: '10:30',
+  petsAllowed: false,
+  amenityFeature: ['Piscina salata', 'Parcheggio riservato', 'Aria condizionata', 'Wi-fi', 'Cucina in comune', 'Colazione']
+    .map((n) => ({ '@type': 'LocationFeatureSpecification', name: n, value: true })),
+  sameAs: [imp.instagram].filter(Boolean),
+};
+const freccia = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M6 4h6v6"/></svg>';
+---
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="preload" href={fontUrl} as="font" type="font/woff2" crossorigin>
+  <title>{titolo}</title>
+  <meta name="description" content={descrizione}>
+  <link rel="canonical" href={canonico}>
+  {noindex && <meta name="robots" content="noindex">}
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content={imp.nome}>
+  <meta property="og:title" content={titolo}>
+  <meta property="og:description" content={descrizione}>
+  <meta property="og:url" content={canonico}>
+  <meta property="og:image" content={new URL(`/img/web/${immagine}-1280.webp`, Astro.site).href}>
+  <meta name="theme-color" content="#f5f1e6">
+  <link rel="icon" href="/marchio.png" type="image/png">
+  <script type="application/ld+json" set:html={JSON.stringify(struttura)} />
+  {jsonld.map((j) => <script type="application/ld+json" set:html={JSON.stringify(j)} />)}
+</head>
+<body>
+  <a class="skip" href="#contenuto">Vai al contenuto</a>
+  <div class="wrap" id="sito">
+    <header><Testata attiva={attiva} /></header>
+    <main id="contenuto" class="stack">
+      <slot />
+    </main>
+    <footer class="foot">
+      <div>
+        <img src="/logo-orizzontale.png" alt={`${imp.nome}, ${imp.sottotitolo}`} width="683" height="160" style="height:52px;width:auto;margin-bottom:14px" loading="lazy">
+        <p class="muted">B&B con piscina salata e parcheggio riservato, a 5 km dal mare Ionio.</p>
+        <div class="soc">
+          {imp.instagram && <a href={imp.instagram} target="_blank" rel="noopener">Instagram</a>}
+          <a href="/gazzettino">Il gazzettino di Donna Ida</a>
+        </div>
+      </div>
+      <div>
+        <h2>Dove siamo</h2>
+        <p class="muted rec">
+          <span>{imp.indirizzo}</span>
+          <a href={imp.mappa_url} target="_blank" rel="noopener">Apri la mappa</a>
+        </p>
+      </div>
+      <div>
+        <h2>Contatti</h2>
+        <p class="muted rec">
+          <a href={tel(imp.tel1)}>{imp.tel1_nome} · {imp.tel1_vista}</a>
+          <a href={tel(imp.tel2)}>{imp.tel2_nome} · {imp.tel2_vista}</a>
+          <a href={`mailto:${imp.email}`}>{imp.email}</a>
+        </p>
+      </div>
+      <div class="legal">
+        <span>© {imp.ragione_sociale || imp.nome}{imp.piva && ` · P. IVA ${imp.piva}`}{imp.cin && ` · CIN ${imp.cin}`}</span>
+        <a href="/regole-della-casa">Regole della casa</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/cookie">Cookie</a>
+      </div>
+    </footer>
+  </div>
+
+  <div class="pannello" id="pannello" hidden role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="top">
+      <a href="/" aria-label={`${imp.nome}, torna alla home`}><img src="/logo-orizzontale.png" alt="" width="683" height="160"></a>
+      <button class="round" type="button" aria-label="Chiudi il menu" data-chiudi>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>
+      </button>
+    </div>
+    <ul>
+      <li><a href="/" aria-current={attiva === 'home' ? 'page' : undefined}>Home</a></li>
+      {VOCI.map((v) => <li><a href={v.href} aria-current={v.id === attiva ? 'page' : undefined}>{v.nome}</a></li>)}
+    </ul>
+    <a class="pill light" href="/contatti#richiesta" style="align-self:flex-start">Chiedi la disponibilità<span class="arr" aria-hidden="true" set:html={freccia}></span></a>
+    <div class="contatti">
+      <a href={tel(imp.tel1)}>{imp.tel1_nome} · {imp.tel1_vista}</a>
+      <a href={`mailto:${imp.email}`}>{imp.email}</a>
+    </div>
+  </div>
+
+  <script>
+    const pannello = document.getElementById('pannello')!;
+    const sito = document.getElementById('sito')!;
+    let ultimo: HTMLElement | null = null;
+    function apri(e: Event) {
+      ultimo = e.currentTarget as HTMLElement;
+      pannello.hidden = false;
+      sito.inert = true;
+      document.body.style.overflow = 'hidden';
+      document.querySelectorAll('[data-apri]').forEach((b) => b.setAttribute('aria-expanded', 'true'));
+      (pannello.querySelector('[data-chiudi]') as HTMLElement).focus();
+    }
+    function chiudi() {
+      pannello.hidden = true;
+      sito.inert = false;
+      document.body.style.overflow = '';
+      document.querySelectorAll('[data-apri]').forEach((b) => b.setAttribute('aria-expanded', 'false'));
+      ultimo?.focus();
+    }
+    document.querySelectorAll('[data-apri]').forEach((b) => b.addEventListener('click', apri));
+    pannello.querySelector('[data-chiudi]')!.addEventListener('click', chiudi);
+    pannello.querySelectorAll('a').forEach((a) => a.addEventListener('click', chiudi));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !pannello.hidden) chiudi(); });
+    matchMedia('(min-width: 901px)').addEventListener('change', (m) => { if (m.matches && !pannello.hidden) chiudi(); });
+  </script>
+</body>
+</html>

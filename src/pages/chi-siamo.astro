@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+import Foto from '../components/Foto.astro';
+import Pill from '../components/Pill.astro';
+---
+<Base
+  titolo="Chi siamo: la storia del Villino Ida · Vida Locrese"
+  descrizione="VIda Locrese è il Villino Ida, creato da papà per mamma nella terra dei nostri avi a Merici (Gerace). Oggi lo cura tutta la famiglia, con la supervisione di nonna Ida."
+  attiva="chi-siamo" immagine="famiglia-antica">
+
+  <section class="phero2" aria-labelledby="titolo">
+    <div class="card">
+      <span class="eyebrow"><i></i>Un po' di noi</span>
+      <h1 id="titolo">Perché <b>VIda Locrese?</b></h1>
+      <p>Perché è il <b>Villino Ida</b>, creato da papà per mamma nella terra dei nostri avi. Oggi, con il desiderio di condividerlo, è tornato a nuova vita.</p>
+    </div>
+    <div class="pic"><Foto nome="famiglia-antica" alt="Una vecchia foto di famiglia in bianco e nero" prima sizes="(max-width: 900px) 100vw, 620px" width="700" height="459" /></div>
+  </section>
+
+  <section class="story" aria-labelledby="merici">
+    <div class="side"><span class="eyebrow"><i></i>Merici</span><Foto nome="paese" alt="Una donna in un paesaggio di campagna, foto d'epoca" sizes="200px" width="400" height="600" /></div>
+    <div class="mid">
+      <h2 class="h2" id="merici">Una campagna <b>che guarda il mare</b></h2>
+      <p>In pianura, a soli 5 km dalla costa ionica, che si vede bene, sorge <b>Merici</b>: una località di campagna marina, con l'orizzonte a ponente verso il maestoso Tre Pizzi d'Aspromonte.</p>
+      <p>È pronta ad accogliervi con il calore della gente del Sud.</p>
+    </div>
+    <div class="side right"><Foto nome="famiglia-porta" alt="Una famiglia sulla porta di casa, foto d'epoca" sizes="200px" width="402" height="600" /></div>
+  </section>
+
+  <section class="dark" aria-labelledby="chi">
+    <div class="l">
+      <h2 class="h2" id="chi">Chi vi <b>accoglie</b></h2>
+      <p style="color:var(--soft);max-width:50ch">Vida Locrese è curata da Antonio, dai figli Alessandro, Claudia e Laura, da Erika, insieme a Manuela e Massimo. E naturalmente sempre con la supervisione di <b style="color:#fff;font-weight:600">mamma e nonna Ida</b>.</p>
+      <p style="color:var(--soft);max-width:50ch">Vida Locrese è per la pace, l'amore e l'inclusione tra tutti i popoli.</p>
+      <div><Pill href="/contatti" testo="Scriveteci" tono="chiaro" /></div>
+    </div>
+    <div class="r"><Foto nome="cena-amici" alt="Una cena in giardino con famiglia e amici" sizes="(max-width: 900px) 100vw, 560px" width="700" height="525" style="border-radius:var(--r-lg);aspect-ratio:4/3;object-fit:cover;width:100%" /></div>
+  </section>
+
+  <section aria-labelledby="album">
+    <div class="head-row"><h2 class="h2" id="album">L'album <b>di famiglia</b></h2></div>
+    <div class="ospiti">
+      <div class="ospite"><Foto nome="nonni" alt="Una coppia elegante, foto d'epoca" sizes="(max-width: 900px) 50vw, 290px" width="398" height="600" /></div>
+      <div class="ospite"><Foto nome="forno" alt="Il forno a legna acceso" sizes="(max-width: 900px) 50vw, 290px" width="700" height="525" /></div>
+      <div class="ospite"><Foto nome="famiglia" alt="Una famiglia in posa nel giardino" sizes="(max-width: 900px) 50vw, 290px" width="450" height="600" /></div>
+      <div class="ospite"><Foto nome="brindisi" alt="Un selfie sorridente all'aperto" sizes="(max-width: 900px) 50vw, 290px" width="700" height="525" /></div>
+    </div>
+  </section>
+
+  <section class="split" aria-labelledby="gazz">
+    <div class="t">
+      <span class="eyebrow"><i></i>Parola di Donna Ida</span>
+      <h2 class="h2" id="gazz">Il gazzettino <b>di Donna Ida</b></h2>
+      <div class="prose"><p>Dall'alto delle sue "90 primavere", Donna Ida vi racconta gli eventi e le novità della zona. Notizie sempre belle, più o meno. Ma sempre con affetto!</p></div>
+      <div class="actions"><Pill href="/gazzettino" testo="Leggi il gazzettino" /></div>
+    </div>
+    <Foto nome="fiori" alt="Un vaso di fiori rossi sul prato" sizes="(max-width: 900px) 100vw, 580px" width="412" height="550" style="aspect-ratio:4/3" />
+  </section>
+</Base>

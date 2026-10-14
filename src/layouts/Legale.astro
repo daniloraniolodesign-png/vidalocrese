@@ -1,0 +1,18 @@
+---
+// Pagina legale in bozza: mostra in cima cosa manca, finché il cliente non lo fornisce.
+import Base from './Base.astro';
+interface Props { titolo: string; descrizione: string; mancano?: string[] }
+const { titolo, descrizione, mancano = [] } = Astro.props;
+---
+<Base titolo={`${titolo} · Vida Locrese`} descrizione={descrizione} noindex={mancano.length > 0}>
+  <article class="legale">
+    <h1>{titolo}</h1>
+    {mancano.length > 0 && (
+      <div class="avviso">
+        <b>Bozza da completare e far verificare al consulente prima della pubblicazione.</b> Mancano:
+        <ul style="margin-top:6px">{mancano.map((m) => <li>{m}</li>)}</ul>
+      </div>
+    )}
+    <slot />
+  </article>
+</Base>

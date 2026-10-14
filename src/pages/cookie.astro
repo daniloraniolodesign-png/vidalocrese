@@ -1,0 +1,12 @@
+---
+import Legale from '../layouts/Legale.astro';
+import { imp } from '../lib/dati';
+---
+<Legale titolo="Cookie" descrizione="Il sito di Vida Locrese non usa cookie di profilazione né di statistica."
+  mancano={['conferma finale dopo la scelta del servizio per il modulo']}>
+  <p>Questo sito <b>non usa cookie</b>: né per la pubblicità, né per le statistiche, né per ricordare le tue scelte. Per questo non ti chiediamo nessun consenso quando entri.</p>
+  <p>I caratteri e le foto sono caricati dal sito stesso, senza passare da servizi esterni.</p>
+  <h2>Servizi esterni</h2>
+  <p>Quando apri Booking.com, Instagram o la mappa, entri su un servizio esterno che può usare i propri cookie, spiegati nella sua informativa.</p>
+  <p>Per domande scrivi a {imp.email}.</p>
+</Legale>

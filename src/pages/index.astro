@@ -1,0 +1,146 @@
+---
+import Base from '../layouts/Base.astro';
+import Foto from '../components/Foto.astro';
+import Pill from '../components/Pill.astro';
+import { imp, faq, gazzettino } from '../lib/dati';
+
+const faqLd = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.domanda, acceptedAnswer: { '@type': 'Answer', text: f.risposta } })),
+};
+const freccia = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M6 4h6v6"/></svg>';
+const ultimi = gazzettino.slice(0, 3);
+---
+<Base
+  titolo="B&B con piscina vicino Locri e Gerace · Vida Locrese"
+  descrizione="Vida Locrese, dimora di campagna marina a Merici (Gerace): quattro camere climatizzate, piscina salata e parcheggio riservato a 5 km dal mare Ionio."
+  attiva="home" jsonld={[faqLd]}>
+
+  <section class="hero2" aria-labelledby="titolo">
+    <div class="txt">
+      <div class="top">
+        <span class="eyebrow"><i></i>B&B a Merici · Gerace · Calabria</span>
+        <h1 id="titolo"><span class="sr">B&B con piscina vicino Locri: </span>Vida Locrese, <b>dimora di campagna marina</b> a 5 km dal mare</h1>
+        <p>Quattro camere a colori, una piscina salata nel verde dell'aranceto e colazioni che sono quasi un brunch. Tutto in assoluta tranquillità.</p>
+        <div class="actions"><Pill href="/contatti#richiesta" testo="Chiedi la disponibilità" /><Pill href="/camere" testo="Vedi le camere" tono="chiaro" /></div>
+      </div>
+      <div class="stats">
+        <div class="stat hi"><b>4 camere</b><span>fino a 4 persone<br>ciascuna</span></div>
+        <div class="stat"><b>5 km</b><span>dalla costa<br>ionica</span></div>
+        <div class="stat"><b>7 km</b><span>dal borgo<br>di Gerace</span></div>
+      </div>
+    </div>
+    <div class="pic">
+      <Foto nome="piscina-pino" alt="La piscina salata tra il prato, il pino e la casa" prima sizes="(max-width: 900px) 100vw, 600px" width="700" height="526" />
+      <div class="float">
+        <div class="row"><div><h2>Piscina salata</h2><p>Aperta dal 1° giugno al 30 settembre</p></div>
+          <a class="round" href="/giardino-e-piscina" aria-label="Scopri la piscina e il giardino" set:html={freccia}></a></div>
+        <Foto nome="piscina-tramonto" alt="La piscina illuminata al tramonto" sizes="290px" width="700" height="526" />
+      </div>
+    </div>
+  </section>
+
+  <section class="story" aria-labelledby="perche">
+    <div class="side"><span class="eyebrow"><i></i>Perché VIda?</span><Foto nome="famiglia-antica" alt="Una vecchia foto di famiglia in bianco e nero" sizes="200px" width="700" height="459" /></div>
+    <div class="mid">
+      <h2 class="h2" id="perche">VIda è il <b>Villino Ida</b></h2>
+      <p>Il villino è stato creato da papà per mamma, <b>nella terra dei nostri avi</b>. Oggi, con il desiderio di condividerlo, è tornato a nuova vita.</p>
+      <p>Lo curano Antonio, i figli Alessandro, Claudia e Laura, Erika, Manuela e Massimo. Sempre con la supervisione di <b>mamma e nonna Ida</b>.</p>
+      <div><Pill href="/chi-siamo" testo="La nostra storia" /></div>
+    </div>
+    <div class="side right"><Foto nome="nonni" alt="Una coppia elegante in una foto d'epoca" sizes="200px" width="398" height="600" /></div>
+  </section>
+
+  <section class="dark" aria-labelledby="giornate">
+    <div class="l">
+      <h2 class="h2" id="giornate">Le giornate <b>a Vida Locrese</b></h2>
+      <div class="doors">
+        <a class="door" href="/camere"><Foto nome="camera-gialla" alt="" sizes="96px" width="700" height="525" /><div><h3>Le camere</h3><p>Quattro stanze a colori, ognuna con il suo affaccio</p></div><span class="round" aria-hidden="true" set:html={freccia}></span></a>
+        <a class="door" href="/colazioni"><Foto nome="colazione-buffet" alt="" sizes="96px" width="622" height="700" /><div><h3>Colazioni e cucina</h3><p>Colazione dolce e salata, cucina in comune</p></div><span class="round" aria-hidden="true" set:html={freccia}></span></a>
+        <a class="door" href="/giardino-e-piscina"><Foto nome="amaca" alt="" sizes="96px" width="700" height="526" /><div><h3>Giardino e piscina</h3><p>Prato, aranceto, sculture e piscina salata</p></div><span class="round" aria-hidden="true" set:html={freccia}></span></a>
+        <a class="door" href="/mare-e-dintorni"><Foto nome="spiaggia" alt="" sizes="96px" width="700" height="513" /><div><h3>Il mare e i dintorni</h3><p>Spiagge quasi tutte libere, Gerace e Locri</p></div><span class="round" aria-hidden="true" set:html={freccia}></span></a>
+      </div>
+    </div>
+    <div class="r">
+      <div class="book">
+        <h3>Prenota direttamente con noi</h3>
+        <ul>
+          <li>Check-in {imp.checkin}, check-out {imp.checkout}</li>
+          <li>Parcheggio riservato agli ospiti</li>
+          <li>Colazione dolce e salata ogni mattina</li>
+        </ul>
+        <div><Pill href="/contatti#richiesta" testo="Chiedi la disponibilità" /></div>
+        <p class="note">Rispondono Alessandro o Manuela.</p>
+      </div>
+      <div class="table">
+        <div><h3>Dicono di noi</h3><p>Le recensioni dei nostri ospiti su Booking.com.</p></div>
+        <Pill href={imp.recensioni_url} testo="Leggi le recensioni" esterno />
+      </div>
+    </div>
+  </section>
+
+  <section class="mosaico" aria-labelledby="estate">
+    <Foto nome="giardino-sera" alt="Il giardino con le luci accese la sera" sizes="(max-width: 900px) 50vw, 400px" width="700" height="526" />
+    <Foto nome="piscina-ombrelloni" alt="Gli ombrelloni sul prato vicino alla piscina" sizes="(max-width: 900px) 50vw, 400px" width="700" height="526" />
+    <Foto nome="buganvillea" alt="La buganvillea fiorita accanto alla casa" sizes="400px" width="450" height="600" />
+    <div class="over">
+      <h2 id="estate">L'estate al fresco, <b>nell'ampio verde di un giardino</b>, in assoluta tranquillità.</h2>
+      <div class="badges">
+        <div class="badge hi"><b>Piscina salata</b><span>10 x 4,5 metri, profonda 1,20</span></div>
+        <div class="badge"><b>Parcheggio</b><span>riservato agli ospiti</span></div>
+        <div class="badge"><b>4 camere</b><span>tutte climatizzate</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="cosa">
+    <div class="head-row">
+      <h2 class="h2" id="cosa">Cosa trovi <b>a Vida Locrese</b></h2>
+      <Pill href="/contatti#richiesta" testo="Chiedi la disponibilità" />
+    </div>
+    <div class="cats">
+      <a class="cat" href="/camere">
+        <h3><span>(01)</span>In camera</h3>
+        <ul class="tags"><li>Aria condizionata</li><li>Wi-fi</li><li>Minibar</li><li>Macchina Nespresso</li><li>Bollitore</li><li>Asciugacapelli</li><li>Cassaforte</li></ul>
+        <p>Stanze ristrutturate e arredate con cura, per un massimo di 4 persone.</p>
+      </a>
+      <a class="cat inv" href="/giardino-e-piscina">
+        <h3><span>(02)</span>Spazi comuni</h3>
+        <ul class="tags"><li>Piscina salata</li><li>Giardino fiorito</li><li>Aranceto e uliveto</li><li>Cucina in comune</li><li>Parcheggio</li></ul>
+        <p>La cucina in comune è separata dalla zona delle camere.</p>
+      </a>
+      <a class="cat" href="/mare-e-dintorni">
+        <h3><span>(03)</span>Intorno</h3>
+        <ul class="tags"><li>Mare a 5 km</li><li>Gerace a 7 km</li><li>Locri Bandiera Blu 2026</li><li>Spiagge libere</li></ul>
+        <p>Sulla Costa dei Gelsomini, nella terra di Locri Epizefiri.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="faq" aria-labelledby="domande">
+    <div style="display:grid;gap:14px;align-content:start">
+      <span class="eyebrow"><i></i>Domande frequenti</span>
+      <h2 class="h2" id="domande">Prima di <b>arrivare</b></h2>
+      <p class="lead">Non trovi la risposta? Chiama {imp.tel1_nome} al {imp.tel1_vista} o scrivi a {imp.email}.</p>
+    </div>
+    <div class="dettagli">
+      {faq.map((f) => <details><summary>{f.domanda}</summary><div class="corpo"><p>{f.risposta}</p></div></details>)}
+    </div>
+  </section>
+
+  <section aria-labelledby="gazz">
+    <div class="head-row">
+      <h2 class="h2" id="gazz">Il gazzettino <b>di Donna Ida</b></h2>
+      <Pill href="/gazzettino" testo="Tutte le notizie" tono="chiaro" />
+    </div>
+    <div class="posts">
+      {ultimi.map((p) => (
+        <article class="post">
+          <time datetime={p.data}>{p.quando}</time>
+          <h3 style="font:600 18px/1.3 var(--font)">{p.titolo}</h3>
+          <p>{p.testo}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</Base>

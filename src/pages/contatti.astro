@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import Foto from '../components/Foto.astro';
+import Pill from '../components/Pill.astro';
+import Modulo from '../components/Modulo.astro';
+import { imp, tel } from '../lib/dati';
+---
+<Base
+  titolo="Contatti e prenotazioni · Vida Locrese, Merici (Gerace)"
+  descrizione="Prenota a Vida Locrese: Contrada Merici, Gerace (RC). Alessandro 334 763 1014, Manuela 328 487 5803, info@vidalocrese.it."
+  attiva="contatti" immagine="merici">
+
+  <section style="display:grid;gap:14px;padding-top:24px">
+    <span class="eyebrow"><i></i>Contatti</span>
+    <h1 class="h2" style="font-size:clamp(34px,4vw,52px)">Vi aspettiamo <b>a Merici</b></h1>
+    <p class="lead">Mandaci le date per sapere se c'è posto, oppure chiamaci. Ti rispondono Alessandro o Manuela.</p>
+  </section>
+
+  <section class="contatti" aria-label="Recapiti e richiesta">
+    <div style="display:grid;gap:20px;align-content:start">
+      <div class="cbox">
+        <h2>Recapiti</h2>
+        <dl>
+          <div><dt>{imp.tel1_nome}</dt><dd><a href={tel(imp.tel1)}>{imp.tel1_vista}</a></dd></div>
+          <div><dt>{imp.tel2_nome}</dt><dd><a href={tel(imp.tel2)}>{imp.tel2_vista}</a></dd></div>
+          <div><dt>Email</dt><dd><a href={`mailto:${imp.email}`}>{imp.email}</a></dd></div>
+          <div><dt>Indirizzo</dt><dd>{imp.indirizzo}</dd></div>
+          <div><dt>Check-in e check-out</dt><dd>Arrivo {imp.checkin}, dopo una telefonata a Manuela. Partenza {imp.checkout}.</dd></div>
+        </dl>
+        <div class="actions"><Pill href={imp.mappa_url} testo="Apri la mappa" esterno /></div>
+      </div>
+      <Foto nome="merici" alt="Il cartello in ferro di Merici" sizes="(max-width: 900px) 100vw, 580px" width="700" height="467" style="border-radius:var(--r-xl);aspect-ratio:3/2;object-fit:cover;width:100%" />
+      <div class="table">
+        <div><h2 style="font:600 18px/1.2 var(--font)">Preferisci Booking.com?</h2><p>Vida Locrese è anche su Booking.com.</p></div>
+        <Pill href={imp.booking_url} testo="Apri Booking.com" esterno />
+      </div>
+    </div>
+    <Modulo titolo="Chiedi la disponibilità" id="richiesta" />
+  </section>
+</Base>

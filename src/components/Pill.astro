@@ -1,0 +1,10 @@
+---
+// Tasto a pillola con il cerchio e la freccia (stile di riferimento).
+interface Props { href: string; testo: string; tono?: 'scuro' | 'chiaro'; esterno?: boolean; class?: string }
+const { href, testo, tono = 'scuro', esterno = false, class: cls } = Astro.props;
+---
+<a class:list={['pill', tono === 'chiaro' && 'light', cls]} href={href}
+   {...(esterno ? { target: '_blank', rel: 'noopener' } : {})}>
+  {testo}<span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M6 4h6v6"/></svg></span>
+  {esterno && <span class="sr">(si apre in una nuova scheda)</span>}
+</a>

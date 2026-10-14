@@ -1,0 +1,73 @@
+---
+import Base from '../layouts/Base.astro';
+import Foto from '../components/Foto.astro';
+import Pill from '../components/Pill.astro';
+---
+<Base
+  titolo="Piscina salata e giardino nell'aranceto · Vida Locrese"
+  descrizione="Piscina salata di 10 x 4,5 metri aperta dal 1° giugno al 30 settembre, giardino fiorito con gelso secolare, aranceto, uliveto e sculture. A Merici, vicino Locri."
+  attiva="piscina" immagine="piscina-giorno">
+
+  <section class="phero2" aria-labelledby="titolo">
+    <div class="card">
+      <span class="eyebrow"><i></i>Giardino e piscina</span>
+      <h1 id="titolo">Dopo il mare, <b>la piscina salata</b></h1>
+      <p>Rilassatevi sul prato della piscina panoramica, nel verde dell'aranceto e del giardino fiorito.</p>
+    </div>
+    <div class="pic"><Foto nome="piscina-giorno" alt="La piscina con lettini e ombrelloni in una giornata di sole" prima sizes="(max-width: 900px) 100vw, 620px" width="700" height="526" /></div>
+  </section>
+
+  <section aria-labelledby="numeri">
+    <h2 class="sr" id="numeri">La piscina in numeri</h2>
+    <div class="dati">
+      <div class="stat hi"><b>10 x 4,5 m</b><span>la vasca</span></div>
+      <div class="stat"><b>1,20 m</b><span>la profondità</span></div>
+      <div class="stat"><b>1/6 – 30/9</b><span>il periodo di apertura</span></div>
+      <div class="stat"><b>8–20</b><span>l'orario di ogni giorno</span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="galleria">
+    <h2 class="sr" id="galleria">Foto della piscina</h2>
+    <div class="gal">
+      <Foto nome="piscina-notte" alt="La piscina illuminata di notte" class="big" sizes="(max-width: 900px) 100vw, 600px" width="700" height="526" />
+      <Foto nome="piscina-prato" alt="La piscina con il prato e le colline" sizes="(max-width: 900px) 50vw, 290px" width="700" height="526" />
+      <Foto nome="piscina-frange" alt="Ombrellone a frange sul bordo della piscina" sizes="(max-width: 900px) 50vw, 290px" width="700" height="526" />
+      <Foto nome="piscina-sole" alt="Il sole che tramonta riflesso nella piscina" sizes="(max-width: 900px) 50vw, 290px" width="700" height="514" />
+      <Foto nome="piscina-casa" alt="La piscina con la casa e il grande pino" sizes="(max-width: 900px) 50vw, 290px" width="700" height="525" />
+    </div>
+    <p class="avviso" style="margin-top:16px">La piscina non ha il bagnino: si usa sotto la propria responsabilità (per i bambini, quella dei genitori) e con la cuffia.</p>
+  </section>
+
+  <section class="split" aria-labelledby="giardino">
+    <div class="t">
+      <span class="eyebrow"><i></i>Gli spazi verdi</span>
+      <h2 class="h2" id="giardino">Fiori rosa, <b>fiori di pesco</b></h2>
+      <div class="prose">
+        <p>Il giardino fiorito, con il suo <b>gelso rosso secolare</b>, le sculture sparse qua e là e l'aranceto della "mastra", vi farà compagnia in silenzio.</p>
+        <p>Gli alberi da frutto e l'orto sono a disposizione: si possono cogliere frutti e ortaggi per consumarli qui.</p>
+      </div>
+    </div>
+    <Foto nome="amaca" alt="Amaca colorata tra gli alberi del giardino" sizes="(max-width: 900px) 100vw, 580px" width="700" height="526" />
+  </section>
+
+  <section aria-labelledby="galleria2">
+    <h2 class="sr" id="galleria2">Foto del giardino</h2>
+    <div class="gal">
+      <Foto nome="arco" alt="Arco di verde sopra il vialetto del giardino" sizes="(max-width: 900px) 50vw, 290px" width="412" height="550" />
+      <Foto nome="sculture" alt="Sculture di busti tra le palme del giardino" sizes="(max-width: 900px) 50vw, 290px" width="700" height="526" />
+      <Foto nome="ombrellone" alt="Ombrellone di paglia e sdraio sul prato" sizes="(max-width: 900px) 50vw, 290px" width="700" height="525" />
+      <Foto nome="aranceto" alt="Rami di ulivo nell'aranceto" sizes="(max-width: 900px) 50vw, 290px" width="700" height="526" />
+    </div>
+  </section>
+
+  <section class="mosaico" aria-labelledby="sera">
+    <Foto nome="piscina-luci" alt="La piscina e il giardino con le luci della sera" sizes="(max-width: 900px) 50vw, 400px" width="700" height="526" />
+    <Foto nome="cancello" alt="Il cancello verde tra le piante" sizes="(max-width: 900px) 50vw, 400px" width="511" height="700" />
+    <Foto nome="veranda-fiori" alt="Fiori e divanetti sulla veranda" sizes="400px" width="525" height="700" />
+    <div class="over">
+      <h2 id="sera">La sera, il giardino <b>si accende</b>.</h2>
+      <div class="actions"><Pill href="/contatti#richiesta" testo="Chiedi la disponibilità" tono="chiaro" /></div>
+    </div>
+  </section>
+</Base>
